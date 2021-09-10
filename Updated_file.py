@@ -260,6 +260,10 @@ if uploaded_file is not None:
 
     final_data = pd.merge(Test_Data, table_dict)
     Rearrange = final_data
+    
+    new = Rearrange["Predicted_Output"].str.split(" - ", n = 1, expand = True)
+    Rearrange["Predicted_Category"]= new[0]
+    Rearrange["Predicted_Sub-Category"]= new[1]
 
     Rearrange.loc[:,'Item_name'] = Rearrange['item_name']
 
@@ -269,7 +273,7 @@ if uploaded_file is not None:
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_title)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_Units)
 
-    df_final = Rearrange[['item_name','Item_name','Probability','Predicted_Output']]
+    df_final = Rearrange[['item_name','Item_name','Probability','Predicted_Category','Predicted_Sub-Category']]
     st.write(df_final)
     
     csv = df_final.to_csv(index=False)

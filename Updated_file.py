@@ -273,6 +273,9 @@ if uploaded_file is not None:
     #Rearrange.loc[:,'Modified_Item_name'] = Rearrange['Modified_Item_name'].apply(str_title)
     #Rearrange.loc[:,'Modified_Item_name'] = Rearrange['Modified_Item_name'].apply(str_Units)
     
+    Rearrange.loc[:,'Predicted_Category'] = Rearrange['Predicted_Category'].apply(titlecase)
+    Rearrange.loc[:,'Predicted_Sub-Category'] = Rearrange['Predicted_Sub-Category'].apply(titlecase)
+    
 
     df_final = Rearrange[['item_name','Modified_Item_name','Probability','Predicted_Category','Predicted_Sub-Category']]
     st.write(df_final)

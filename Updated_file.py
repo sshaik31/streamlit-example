@@ -142,8 +142,10 @@ if uploaded_file is not None:
         return s.capitalize()
 
     def str_Units(s):
-        return re.sub(r"Sunfeast", "sunny", s)
-            
+        clean7  = re.compile("sunfeast", re.IGNORECASE)
+        cleantext = re.sub(clean7, "sunnyy", s)
+        return cleantext.strip()
+      
 
     
     training_df.loc[:,'Input'] = training_df['Input'].apply(remove_bracket2)

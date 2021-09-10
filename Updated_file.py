@@ -265,15 +265,16 @@ if uploaded_file is not None:
     Rearrange["Predicted_Category"]= new[0]
     Rearrange["Predicted_Sub-Category"]= new[1]
 
-    Rearrange.loc[:,'Item_name'] = Rearrange['item_name']
+    Rearrange.loc[:,'Modified_Item_name'] = Rearrange['item_name']
 
-    Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_lower)
-    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(remove_bracket2)
-    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(titlecase)
-    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_title)
-    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_Units)
+    Rearrange.loc[:,'Modified_Item_name'] = Rearrange['Modified_Item_name'].apply(str_captalize)
+    #Rearrange.loc[:,'Modified_Item_name'] = Rearrange['Modified_Item_name'].apply(remove_bracket2)
+    #Rearrange.loc[:,'Modified_Item_name'] = Rearrange['Modified_Item_name'].apply(titlecase)
+    #Rearrange.loc[:,'Modified_Item_name'] = Rearrange['Modified_Item_name'].apply(str_title)
+    #Rearrange.loc[:,'Modified_Item_name'] = Rearrange['Modified_Item_name'].apply(str_Units)
+    
 
-    df_final = Rearrange[['item_name','Item_name','Probability','Predicted_Category','Predicted_Sub-Category']]
+    df_final = Rearrange[['item_name','Modified_Item_name','Probability','Predicted_Category','Predicted_Sub-Category']]
     st.write(df_final)
     
     csv = df_final.to_csv(index=False)

@@ -265,9 +265,9 @@ if uploaded_file is not None:
 
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_lower)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(remove_bracket2)
-    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(titlecase)
-    Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_title)
-    Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_Units)
+    Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(titlecase)
+    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_title)
+    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_Units)
 
     df_final1 = Rearrange[['Item_name','Probability','Predicted_Output']]
     df_final2 = final_data[['item_name','Probability','Predicted_Output']]

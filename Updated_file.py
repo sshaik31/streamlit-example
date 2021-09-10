@@ -263,26 +263,20 @@ if uploaded_file is not None:
 
     Rearrange.loc[:,'Item_name'] = Rearrange['item_name']
 
-    Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_lower)
+    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_lower)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(remove_bracket2)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(titlecase)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_title)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_Units)
 
-    df_final1 = Rearrange[['Item_name','Probability','Predicted_Output']]
-    df_final2 = final_data[['item_name','Probability','Predicted_Output']]
-    st.write(df_final1)
-    st.write(df_final2)
+    df_final = Rearrange[['item_name','Item_name','Probability','Predicted_Output']]
+    st.write(df_final)
     
-    csv = df_final1.to_csv(index=False)
+    csv = df_final.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()
-
-    csv1 = df_final2.to_csv(index=False)
-    b641 = base64.b64encode(csv1.encode()).decode()
+    
 
 
     st.markdown('### **⬇️ Download output CSV File **')
     href = f'<a href="data:file/csv;base64,{b64}" download="myfilename.csv">Download csv file</a>'
-    href1 = f'<a href="data:file/csv;base64,{b641}" download="myfilename.csv">Download csv file</a>'
     st.markdown(href, unsafe_allow_html=True)
-    st.markdown(href1, unsafe_allow_html=True)

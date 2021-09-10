@@ -1,3 +1,7 @@
 altair
 pandas
 streamlit
+numpy
+re
+base64
+sklearn

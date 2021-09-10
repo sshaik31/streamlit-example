@@ -263,7 +263,7 @@ if uploaded_file is not None:
 
     Rearrange.loc[:,'Item_name'] = Rearrange['item_name']
 
-    #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_lower)
+    Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_lower)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(remove_bracket2)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(titlecase)
     #Rearrange.loc[:,'Item_name'] = Rearrange['Item_name'].apply(str_title)

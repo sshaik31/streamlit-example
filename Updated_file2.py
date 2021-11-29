@@ -28,7 +28,7 @@ if uploaded_file is not None:
 
 
     training_df = training_df[["item_name", "entered_category", "entered_sub_category"]]
-    training_df.rename(columns={
+    test_df.rename(columns={
                                 'name':'item_name' }
                                                                                 ,inplace = True)
     

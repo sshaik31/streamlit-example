@@ -12,23 +12,29 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 
 
-st.title("Careem SKU Classifier v1.1")
+st.title("Careem SKU Classifier v1.2")
 
 uploaded_file = st.file_uploader("Choose a csv file")
 if uploaded_file is not None:
 
-    training_df = pd.read_csv('Training_Data.csv')
+    training_df = pd.read_csv('Training_Data1.csv')
     test_df = pd.read_csv(uploaded_file)
+    
+    training_df.rename(columns={
+                                'name':'item_name',
+                            'parent_category_name':'entered_category',
+                            'category_name': 'entered_sub_category' }
+                                                                                ,inplace = True)
 
-    training_df = training_df[["item_name", "Select Category", "Select Sub-category"]]
+
+    training_df = training_df[["item_name", "entered_category", "entered_sub_category"]]
+    training_df.rename(columns={
+                                'name':'item_name' }
+                                                                                ,inplace = True)
+    
     test_df = test_df[["item_name"]]
 
     
-
-    training_df.rename(columns={
-                                'Select Category':'entered_category',
-                                'Select Sub-category': 'entered_sub_category' }
-                                                                                ,inplace = True)
 
     df_Train_null_values = training_df.loc[:,training_df.columns.isin(
                                                         ['item_name',
@@ -69,7 +75,7 @@ if uploaded_file is not None:
         return (x['item_name'])
 
     def output_join_section(x):
-        return (x['entered_category'] + ' - ' + x['entered_sub_category'])
+        return (x['entered_category'] + ' __ ' + x['entered_sub_category'])
 
     training_df.loc[:,'Input'] = training_df.apply(input_join_section,axis=1)
     training_df.loc[:,'output'] = training_df.apply(output_join_section,axis=1)
@@ -261,7 +267,7 @@ if uploaded_file is not None:
     final_data = pd.merge(Test_Data, table_dict)
     Rearrange = final_data
     
-    new = Rearrange["Predicted_Output"].str.split(" - ", n = 1, expand = True)
+    new = Rearrange["Predicted_Output"].str.split(" __ ", n = 1, expand = True)
     Rearrange["Predicted_Category"]= new[0]
     Rearrange["Predicted_Sub-Category"]= new[1]
 

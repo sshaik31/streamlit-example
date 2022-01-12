@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
 
 
-st.title("Cornershop SKU Classifier v2.1")
+st.title("Cornershop SKU Classifier v2.1.1")
 
 uploaded_file = st.file_uploader("Choose a csv file")
 if uploaded_file is not None:

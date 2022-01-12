@@ -284,6 +284,8 @@ if uploaded_file is not None:
     
 
     df_final = Rearrange[['item_name','Modified_Item_name','Probability','Predicted_Category','Predicted_Sub-Category']]
+    df_final.drop_duplicates(keep=False,inplace=True)
+    
     st.write(df_final)
     
     csv = df_final.to_csv(index=False)
